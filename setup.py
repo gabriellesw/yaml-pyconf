@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="yaml-pyconf",
-    version="0.0.1",
+    version="0.0.2",
     author="Gabrielle Sloane Law",
     author_email="rockymcrockerson@gmail.com",
     description="Turn YAML files into python objects",

@@ -1,9 +1,9 @@
 # =================================================================
-# Sample config for a flask app using Postgres, with different
-# settings for development, testing & deployment environments
-# Note that no secrets are exposed in this file. Use .env or some
-# other method to export sensitive environment variables, before
-# you initialize your deployed project
+# Sample config for a Flask/SQLAlchemy app using PostgreSQL, with
+# different settings for development, testing & deployment
+# environments Note that no secrets are exposed in this file.
+# Use .env or some other method to export sensitive environment
+# variables, before you initialize your deployed project
 # =================================================================
 
 defaults: &defaults
@@ -11,8 +11,7 @@ defaults: &defaults
     SQLALCHEMY_TRACK_MODIFICATIONS: false
     SQLALCHEMY_ENGINE_OPTIONS:
         pool_pre_ping: true
-    POSTGRES_DB_PORT: 5432
-
+    DB_PORT: 5432
     SOME_RANDOM_SETTING: 1
     SOME_RANDOM_LIST:
         - "a"
@@ -28,14 +27,15 @@ defaults: &defaults
         - "DB_PASSWORD"
         - "DB_SERVER"
         - "ENVIRONMENT"
+        - "SQLITE_PROJECT_DIRECTORY"
 
 development:
     # General app settings
     TESTING: True
     DEBUG: True
     # Database settings
-    SQLALCHEMY_DB_PREFIX: "sqlite:///"
-    SQLALCHEMY_DB_NAME: "app.db"
+    DB_PREFIX: "sqlite:///"
+    DB_NAME: "app.db"
     <<: *defaults
 
 testing:
@@ -43,8 +43,8 @@ testing:
     TESTING: True
     DEBUG: False
     # Database settings
-    SQLALCHEMY_DB_PREFIX: "postgresql://"
-    SQLALCHEMY_DB_NAME: "test_db_name"
+    DB_PREFIX: "postgresql://"
+    DB_NAME: "test_db_name"
     <<: *defaults
 
 deployment:
@@ -52,6 +52,6 @@ deployment:
     TESTING: False
     DEBUG: False
     # Database settings
-    SQLALCHEMY_DB_PREFIX: "postgresql://"
-    SQLALCHEMY_DB_NAME: "deploy_db_name"
+    DB_PREFIX: "postgresql://"
+    DB_NAME: "deploy_db_name"
     <<: *defaults

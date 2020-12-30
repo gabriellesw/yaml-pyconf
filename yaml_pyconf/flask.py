@@ -5,6 +5,8 @@ from yaml_pyconf.base import BaseConfig
 
 
 class FlaskConfig(BaseConfig):
+    _db_uri = None
+
     def __new__(
             cls,
             yaml_path=pathlib.Path(__file__).parent.joinpath("samples").joinpath("sample-yaml").joinpath("flask-choose-env.yaml"),
@@ -40,3 +42,20 @@ class FlaskConfig(BaseConfig):
             conf,
             list_name=list_name
         )
+
+    @property
+    def SQLALCHEMY_DATABASE_URI(self):
+        """
+        Currently only supports SQLite and PostgreSQL.
+        :return:
+        """
+        if self._db_uri is None:
+            if self.DB_PREFIX == "sqlite:///":
+                self._db_uri = f"{self.DB_PREFIX}" \
+                               f"{os.path.join(self.SQLITE_PROJECT_DIRECTORY, self.DB_NAME)}"
+
+            elif self.DB_PREFIX == "postgresql://":
+                self._db_uri = f"{self.DB_PREFIX}{self.DB_USERNAME}:{self.DB_PASSWORD}@" \
+                       f"{self.DB_SERVER}:{self.DB_PORT}/{self.DB_NAME}"
+
+        return self._db_uri

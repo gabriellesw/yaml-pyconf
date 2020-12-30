@@ -48,3 +48,7 @@ class BaseConfig(ABC):
                 for attribute in conf[list_name]:
                     instance.__setattr__(attribute, os.getenv(attribute))
         return instance
+
+    @classmethod
+    def destroy(cls):
+        cls._instance = None
