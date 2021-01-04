@@ -4,7 +4,7 @@ and dotenv files into a very basic python config object,
 with config options represented as key-value pairs.
 
 ## Current Status:
-As of the time the most recent commit, this is 
-an afternoon's work from start to finish. Use at 
-your own risk. Feel free to report issues or
-contribute.
+This was slapped together in a short amount of time to 
+meet the need of existing projects. It has not been
+reviewed and is not considered to be stable. Testers and
+contributors are encouraged 

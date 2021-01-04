@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 class BaseConfig(ABC):
     _instance = None
 
-    def __new__(cls, yaml_path, dotenv_path=None):
+    def __new__(cls, yaml_path=None, dotenv_path=None):
         if cls._instance is None:
 
             if dotenv_path is None:
@@ -46,7 +46,9 @@ class BaseConfig(ABC):
         if list_name is not None:
             if list_name in conf:
                 for attribute in conf[list_name]:
-                    instance.__setattr__(attribute, os.getenv(attribute))
+                    value = os.getenv(attribute)
+                    if value:
+                        instance.__setattr__(attribute, value)
         return instance
 
     @classmethod

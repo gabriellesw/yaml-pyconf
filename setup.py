@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setuptools.setup(
     name="yaml-pyconf",
-    version="0.0.2",
+    version="0.0.3",
     author="Gabrielle Sloane Law",
     author_email="rockymcrockerson@gmail.com",
     description="Turn YAML files into python objects",
@@ -18,7 +18,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: Unix",
         "Topic :: Utilities",
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
     ],
     python_requires=">=3.6",
     install_requires=["python-dotenv", "PyYAML"],

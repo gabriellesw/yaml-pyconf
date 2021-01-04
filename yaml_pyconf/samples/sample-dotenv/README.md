@@ -3,5 +3,5 @@ It should be manually added to then machine where your
 project is deployed. 
 Never commit files like this to your public repo. 
 
-Note that the ENVIRONMENT value must be set in your .env
+Note that the FLASK_ENV value must be set in your .env
 file for the FlaskConfig to work as expected.
